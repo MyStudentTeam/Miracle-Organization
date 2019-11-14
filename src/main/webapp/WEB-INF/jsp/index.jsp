@@ -1,36 +1,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: KuaQ
-  Date: 2019/11/14
-  Time: 11:40
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript">
-    $(function(){
-        $("tr:even").css("background-color","#CCF6CE");
-        $("tr:eq(1)").css("background-color","#9C9C9C");
-        $("tr:eq(0)").css("background-color","#FFFFFF")
-
-    });
-</script>
-
-
 <div style="width: 700px">
-    <form action="#" method="post" style="width: 700px">
+    <form action="${pageContext.request.contextPath}/edocEntry/edoclist" method="get" style="width: 700px"
+          id="#update_from">
         <p align="center"><span style="padding-right: 100px ">文档分类：
-                <select name="category">
+                <select name="categoryId">
                     <option value="">全部</option>
+                    <c:forEach var="cat" items="${categoryList}">
+                        <option value="${cat.id}">${cat.name}</option>
+                    </c:forEach>
                 </select>
             </span>
-            <input type="submit" value="新增电子文档" />
+            <input type="submit" value="查询"/>
+            <input type="button" onclick="sess()" value="新增电子文档">
         </p>
         <table border="1px" cellpadding="0px" cellspacing="0px" width="700px">
             <tr>
@@ -45,25 +32,72 @@
                 <td>操作</td>
             </tr>
 
-            <c:forEach items="" var="">
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <a href="#">修改</a>
-                    <a href="#">删除</a>
-                </td>
-            </tr>
+            <c:forEach items="${entryList}" var="entry">
+                <tr>
+                    <td>${entry.id}</td>
+                    <td>${entry.title}</td>
+                    <td>${entry.summary}</td>
+                    <td>${entry.uploaduser}</td>
+                    <td>${entry.createDate}</td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/edocEntry/openupdate?id=${entry.id}">修改</a>
+                        <a id="delete" entryid="${entry.id}" href="javascript:void(0)">删除</a>
+                    </td>
+                </tr>
             </c:forEach>
-
+            <tr>
+                <th colspan="6">
+                    <div id="mess">
+                    </div>
+                </th>
+            </tr>
         </table>
 
     </form>
 
 </div>
 
+<script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
+<%--
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.3.min.js"></script>
+--%>
+<script>
+
+    $(function () {
+        $("tr:even").css("background-color", "#CCF6CE");
+        $("tr:eq(1)").css("background-color", "#9C9C9C");
+        $("tr:eq(0)").css("background-color", "#FFFFFF");
+        $("#delete").click(function () {
+            var entryid = $(this);
+            $.ajax({
+                    type: "GET",//请求类型
+                    url: "/edocEntry/delete", //请求
+                    data: "entryid=" + entryid.attr("entryid"),
+                    dataType: "json",//ajax接口（请求url）返回的数据类型*!/*/
+                    success:
+                        function (data) {
+                            //data：返回数据（json对象）
+                            if (data.code == 100) {
+                                $("#mess").html("删除成功");
+                            } else {
+                                alert(data.upd_error)
+                                $("#mess").html(data.del_error + "11");
+                            }
+                        }
+
+                    ,
+                    error: function () {
+
+                        alert("加载失败！");
+                    }
+                }
+            )
+        });
+    });
+
+    function sess() {
+        window.location.href = "/edocEntry/openAddList";
+    }
+</script>
 </body>
 </html>

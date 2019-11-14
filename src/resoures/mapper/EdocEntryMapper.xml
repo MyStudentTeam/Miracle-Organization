@@ -8,7 +8,7 @@ VALUES(null,#{categoryId},#{title},#{summary},#{uploaduser},#{createDate})
     </insert>
     <update id="UpdateEDoc">
         update edocmanagementdb.edoc_entry set
-        <trim prefixOverrides="," prefix="where id=#{id}">
+        <trim suffixOverrides="," suffix="where id=#{id}">
             <if test="categoryId!=null">
                 categoryId=#{categoryId},
             </if>
@@ -35,7 +35,7 @@ VALUES(null,#{categoryId},#{title},#{summary},#{uploaduser},#{createDate})
     <select id="edoclist" resultType="cn.edocmanagement.pojo.EdocEntry">
         select *from edocmanagementdb.edoc_entry
         <trim prefix="where 1=1">
-            <if test="categoryId!=null||categoryId!=0">
+            <if test="categoryId!=null and categoryId!=0">
                 and categoryId=#{categoryId}
             </if>
         </trim>

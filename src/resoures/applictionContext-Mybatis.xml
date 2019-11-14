@@ -43,7 +43,7 @@
         </property>
     </bean>
 
-   <!-- <bean class="cn.air.util.InitDataListener"/>-->
+    <bean class="cn.edocmanagement.util.InitDataListener"/>
     <!--扫描业务层-->
     <!--针对mapper自动代理-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: KuaQ
@@ -12,20 +13,23 @@
 </head>
 <body>
 <div style="width: 500px;">
-    <form action="#" method="post">
+    <form action="${pageContext.request.contextPath}/edocEntry/addlist" method="post">
         <table border="1px" cellspacing="0px" cellpadding="0px" width="500px">
             <tr>
                 <td colspan="2" align="center" style="font-size: 26px;background-color: #CCF6CE">增加电子文档</td>
             </tr>
             <tr>
                 <td>文档名称<span style="color: red">(*)</span></td>
-                <td><input type="text" name="title" /></td>
+                <td><input type="text" name="title"/></td>
             </tr>
             <tr>
                 <td>文档分类：</td>
                 <td>
                     <select name="categoryId">
                         <option value="">全部</option>
+                        <c:forEach var="cat" items="${categoryList}">
+                            <option value="${cat.id}">${cat.name}</option>
+                        </c:forEach>
                     </select>
                 </td>
             </tr>
@@ -37,16 +41,16 @@
             </tr>
             <tr>
                 <td>上传人</td>
-                <td><input type="text" name="uploaduser" /></td>
+                <td><input type="text" name="uploaduser"/></td>
             </tr>
             <tr>
                 <td>上传时间<span style="color: red">(*)</span></td>
-                <td><input type="text" name="createDate" />(yyyy-MM-dd)</td>
+                <td><input type="text" name="createDate"/>(yyyy-MM-dd)</td>
             </tr>
             <tr>
                 <td colspan="2">
                     <input type="submit" value="提交"/>
-                    <input type="button" value="返回"  onclick="javascript:history.back(-1)" />
+                    <input type="button" value="返回" onclick="javascript:history.back(-1)"/>
                 </td>
             </tr>
         </table>

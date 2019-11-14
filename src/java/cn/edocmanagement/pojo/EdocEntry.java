@@ -4,8 +4,9 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
+
 @Data
 public class EdocEntry {
     private Integer id;
@@ -15,4 +16,5 @@ public class EdocEntry {
     private String uploaduser;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createDate;
+    private String time;
 }
