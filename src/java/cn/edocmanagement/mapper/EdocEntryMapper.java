@@ -11,8 +11,12 @@ public interface EdocEntryMapper {
 
     //添加
     public Integer addEdoc(EdocEntry edocEntry);
+
     //修改
     public Integer UpdateEDoc(EdocEntry edocEntry);
+
     //删除
-    public  Integer deleteEDoc(@Param("id") Integer id);
+    public Integer deleteEDoc(@Param("id") Integer id);
+    //查询单个值
+    public EdocEntry  edocEntry(@Param("id") Integer id);
 }
