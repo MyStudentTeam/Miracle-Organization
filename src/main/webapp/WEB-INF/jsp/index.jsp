@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
+
+
 <div style="width: 700px">
     <form action="${pageContext.request.contextPath}/edocEntry/edoclist" method="get" style="width: 700px"
           id="#update_from">
@@ -15,9 +17,13 @@
                         <option value="${cat.id}">${cat.name}</option>
                     </c:forEach>
                 </select>
-            </span>
             <input type="submit" value="查询"/>
+            </span>
+
+
             <input type="button" onclick="sess()" value="新增电子文档">
+
+
         </p>
         <table border="1px" cellpadding="0px" cellspacing="0px" width="700px">
             <tr>
@@ -78,6 +84,7 @@
                         function (data) {
                             //data：返回数据（json对象）
                             if (data.code == 100) {
+                                window.location.href = "${pageContext.request.contextPath}/edocEntry/edoclist";
                                 $("#mess").html("删除成功");
                             } else {
                                 alert(data.upd_error)
