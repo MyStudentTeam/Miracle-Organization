@@ -26,6 +26,11 @@ public class EdocEntryServiceImpl {
         return false;
     }
 
+    //查询单个值
+    public EdocEntry edocEntry(Integer id) {
+        return edocEntryMapper.edocEntry(id);
+    }
+
     //修改
     public boolean UpdateEDoc(EdocEntry edocEntry) {
         if (edocEntryMapper.UpdateEDoc(edocEntry) > 0) {

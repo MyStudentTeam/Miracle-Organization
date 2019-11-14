@@ -41,4 +41,7 @@ VALUES(null,#{categoryId},#{title},#{summary},#{uploaduser},#{createDate})
         </trim>
         order by id desc
     </select>
+    <select id="edocEntry" resultType="cn.edocmanagement.pojo.EdocEntry">
+           select *from edocmanagementdb.edoc_entry where id=#{id}
+    </select>
 </mapper>
