@@ -1,6 +1,7 @@
-/*
 package cn.edocmanagement.util;
 
+import cn.edocmanagement.pojo.EdocEntry;
+import cn.edocmanagement.service.EdocEntryServiceImpl;
 import org.springframework.beans.factory.InitializingBean;
 
 import org.springframework.web.context.ServletContextAware;
@@ -9,38 +10,25 @@ import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import java.util.List;
 
-*/
 /**
  * 初始加载数据
- *//*
-
+ */
 public class InitDataListener implements InitializingBean, ServletContextAware {
     @Resource
-    private AirQualityIndexService airQualityIndexService;
-    @Resource
-    private DistrictService districtService;
+    private EdocEntryServiceImpl edocEntryService;
 
     @Override
     public void afterPropertiesSet() throws Exception {
     }
 
+    //查询页面
     @Override
     public void setServletContext(ServletContext arg0) {
-
-        Integer totalCount = airQualityIndexService.count(null);
-        PageSupport pages = new PageSupport();
-        pages.setCurrentPageNo(1);//页的下标
-        pages.setPageSize(5);//页面容量
-        pages.setTotalCount(totalCount);//总条数
-        //查询总数量
-        int totalPageCount = pages.getTotalPageCount();
-        List<AirQualityIndex> airQualityIndices = airQualityIndexService.getAirList(null, 1, 5);
-        //查询区域
-        List<District> districtList = districtService.getDistList();
-        arg0.setAttribute("airQualityIndices", airQualityIndices);
-        arg0.setAttribute("districtList", districtList);
-        arg0.setAttribute("pages", pages);
+        List<EdocEntry> entryList = edocEntryService.edoclist(0);
+        arg0.setAttribute("entryList", entryList);
     }
+    //修改页面
+    //添加页面
+    //删除页面
 
-
-}*/
+}
