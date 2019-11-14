@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Objects;
 @Data
 public class EdocCategory {
-    private int id;
+    private Integer id;
     private String name;
 
 }

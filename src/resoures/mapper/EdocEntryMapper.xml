@@ -1,4 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.edocmanagement.mapper.EdocEntryMapper">
+    <insert id="addEdoc">
+insert  into edocmanagementdb.edoc_entry
+VALUES(null,#{categoryId},#{title},#{summary},#{uploaduser},#{createDate})
+
+    </insert>
+    <update id="UpdateEDoc">
+        update edocmanagementdb.edoc_entry set
+        <trim prefixOverrides="," prefix="where id=#{id}">
+            <if test="categoryId!=null">
+                categoryId=#{categoryId},
+            </if>
+            <if test="title!=null">
+                title=#{title},
+            </if>
+            <if test="summary!=null">
+                summary=#{summary},
+            </if>
+            <if test="uploaduser!=null">
+                uploaduser=#{uploaduser},
+            </if>
+            <if test="createDate!=null">
+                createDate=#{createDate},
+            </if>
+
+        </trim>
+
+    </update>
+    <delete id="deleteEDoc">
+        delete from edocmanagementdb.edoc_entry
+        where id=#{id}
+    </delete>
+    <select id="edoclist" resultType="cn.edocmanagement.pojo.EdocEntry">
+        select *from edocmanagementdb.edoc_entry
+        <trim prefix="where 1=1">
+            <if test="categoryId!=null||categoryId!=0">
+                and categoryId=#{categoryId}
+            </if>
+        </trim>
+        order by id desc
+    </select>
 </mapper>
