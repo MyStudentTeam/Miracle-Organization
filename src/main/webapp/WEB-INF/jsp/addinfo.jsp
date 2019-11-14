@@ -11,20 +11,46 @@
     <title>Title</title>
 </head>
 <body>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#myform").submit(function () {
+            var title = $("#title").val();
+            var categoryId = $("#categoryId").val();
+            var date= /^[1-9][0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/ ;
+            var createDate = $("#createDate").val();
+
+            if(title=="" || title==null){
+                alert("文档名称不能为空！");
+                return false;
+            }
+            if(categoryId==0){
+                alert("请选择分类！");
+                return false;
+            }
+            if(createDate=="" || !date.test(createDate)){
+                alert("上传日期格式不能为空，并格式必须为yyyy-MM-dd!");
+                return false;
+            }
+        })
+    })
+
+</script>
+
 <div style="width: 500px;">
-    <form action="#" method="post">
+    <form action="#" method="post" id="myform">
         <table border="1px" cellspacing="0px" cellpadding="0px" width="500px">
             <tr>
                 <td colspan="2" align="center" style="font-size: 26px;background-color: #CCF6CE">增加电子文档</td>
             </tr>
             <tr>
                 <td>文档名称<span style="color: red">(*)</span></td>
-                <td><input type="text" name="title" /></td>
+                <td><input type="text" name="title" id="title" /></td>
             </tr>
             <tr>
                 <td>文档分类：</td>
                 <td>
-                    <select name="categoryId">
+                    <select name="categoryId" id="categoryId">
                         <option value="">全部</option>
                     </select>
                 </td>
@@ -41,7 +67,7 @@
             </tr>
             <tr>
                 <td>上传时间<span style="color: red">(*)</span></td>
-                <td><input type="text" name="createDate" />(yyyy-MM-dd)</td>
+                <td><input type="text" name="createDate" id="createDate" />(yyyy-MM-dd)</td>
             </tr>
             <tr>
                 <td colspan="2">

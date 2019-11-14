@@ -26,7 +26,7 @@
     </bean>
     <!--将静态资源解放出来-->
 
-    <mvc:resources mapping="/static/**" location="/static/"></mvc:resources>
+    <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
 
 
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>

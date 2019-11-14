@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
     $(function(){
         $("tr:even").css("background-color","#CCF6CE");
@@ -29,8 +29,9 @@
                 <select name="category">
                     <option value="">全部</option>
                 </select>
+            <input type="submit" value="查询" />
             </span>
-            <input type="submit" value="新增电子文档" />
+            <input type="button" value="新增电子文档" />
         </p>
         <table border="1px" cellpadding="0px" cellspacing="0px" width="700px">
             <tr>
