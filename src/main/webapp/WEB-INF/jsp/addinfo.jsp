@@ -19,12 +19,12 @@
             </tr>
             <tr>
                 <td>文档名称<span style="color: red">(*)</span></td>
-                <td><input type="text" name="" /></td>
+                <td><input type="text" name="title" /></td>
             </tr>
             <tr>
                 <td>文档分类：</td>
                 <td>
-                    <select name="">
+                    <select name="categoryId">
                         <option value="">全部</option>
                     </select>
                 </td>
@@ -32,16 +32,16 @@
             <tr>
                 <td>内容摘要</td>
                 <td>
-                    <textarea name="" style="overflow-y:scroll;height: 50px;width: 300px"></textarea>
+                    <textarea name="summary" style="overflow-y:scroll;height: 50px;width: 300px"></textarea>
                 </td>
             </tr>
             <tr>
                 <td>上传人</td>
-                <td><input type="text" name="" /></td>
+                <td><input type="text" name="uploaduser" /></td>
             </tr>
             <tr>
                 <td>上传时间<span style="color: red">(*)</span></td>
-                <td><input type="text" name="" />(yyyy-MM-dd)</td>
+                <td><input type="text" name="createDate" />(yyyy-MM-dd)</td>
             </tr>
             <tr>
                 <td colspan="2">

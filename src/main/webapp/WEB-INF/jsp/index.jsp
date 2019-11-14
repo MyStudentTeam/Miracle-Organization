@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: KuaQ
@@ -25,7 +26,7 @@
 <div style="width: 700px">
     <form action="#" method="post" style="width: 700px">
         <p align="center"><span style="padding-right: 100px ">文档分类：
-                <select name="">
+                <select name="category">
                     <option value="">全部</option>
                 </select>
             </span>
@@ -44,6 +45,7 @@
                 <td>操作</td>
             </tr>
 
+            <c:forEach items="" var="">
             <tr>
                 <td></td>
                 <td></td>
@@ -55,7 +57,7 @@
                     <a href="#">删除</a>
                 </td>
             </tr>
-
+            </c:forEach>
 
         </table>
 
