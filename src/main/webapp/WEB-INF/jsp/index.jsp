@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -44,7 +45,7 @@
                     <td>${entry.title}</td>
                     <td>${entry.summary}</td>
                     <td>${entry.uploaduser}</td>
-                    <td>${entry.createDate}</td>
+                    <td><fmt:formatDate value="${entry.createDate}" pattern="yyyy-MM-dd"></fmt:formatDate>  </td>
                     <td>
                         <a href="${pageContext.request.contextPath}/edocEntry/openupdate?id=${entry.id}">修改</a>
                         <a id="delete" entryid="${entry.id}" href="javascript:void(0)">删除</a>

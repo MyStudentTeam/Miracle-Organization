@@ -40,7 +40,7 @@
     <form action="/edocEntry/update" method="post">
         <table border="1px" cellspacing="0px" cellpadding="0px" width="500px">
             <tr>
-                <td colspan="2" align="center" style="font-size: 26px;background-color: #CCF6CE">增加电子文档</td>
+                <td colspan="2" align="center" style="font-size: 26px;background-color: #CCF6CE">更新电子文档</td>
             </tr>
             <tr>
                 <td>文档编号</td>
@@ -48,11 +48,7 @@
             </tr>
             <tr>
                 <td>文档名称<span style="color: red">(*)</span></td>
-
                 <td><input type="text" name="title" value="${edocEntry.title}"/></td>
-
-                <td><input type="text" name="title" id="title" value="" /></td>
-
             </tr>
             <tr>
                 <td>文档分类：</td>
